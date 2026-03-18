@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart — Shoply</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div class="site-title">Shoply</div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+      <div class="actions">
+        <div class="cart" role="button" aria-label="Open cart"><span class="count">0</span></div>
+      </div>
+    </header>
+
+    <main>
+      <h1>Your Cart</h1>
+      <div id="cart-list" style="margin-top:12px"></div>
+      <div style="margin-top:18px">
+        <button id="checkout" class="cta">Proceed to Checkout</button>
+        <button id="clear" class="cta secondary">Clear cart</button>
+      </div>
+    </main>
+
+    <footer>
+      <div style="color:var(--muted);font-size:13px">© <span id="year"></span> Shoply. All rights reserved.</div>
+    </footer>
+  </div>
+  <script src="js/main.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script>
+    // small cart page script
+    document.addEventListener('DOMContentLoaded', function(){
+      var list = document.getElementById('cart-list');
+      function render(){
+        var items = getCart();
+        if(!items.length) return list.innerHTML = '<div style="color:var(--muted)">Your cart is empty.</div>';
+        list.innerHTML = '';
+        var total = 0;
+        items.forEach(function(it,i){
+          total += it.price||0;
+          var row = document.createElement('div');
+          row.style.padding='8px 0';
+          row.style.borderBottom='1px solid rgba(255,255,255,0.02)';
+          row.innerHTML = '<strong>'+ (it.title||'Item') +'</strong> <span style="float:right">$'+(it.price||0).toFixed(2)+'</span>';
+          list.appendChild(row);
+        });
+        var tot = document.createElement('div');
+        tot.style.marginTop='12px';
+        tot.style.fontWeight='700';
+        tot.innerHTML = 'Total: $'+total.toFixed(2);
+        list.appendChild(tot);
+      }
+      render();
+      document.getElementById('clear').addEventListener('click', function(){ clearCart(); render(); document.querySelector('.cart .count').textContent='0'; });
+      document.getElementById('checkout').addEventListener('click', function(){ location.href='checkout.html'; });
+    });
+  </script>
+</body>
+</html>

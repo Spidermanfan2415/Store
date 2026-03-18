@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Shoply — Modern Ecommerce</title>
+		<meta name="description" content="A modern ecommerce homepage demo with featured products and responsive layout." />
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="brand">
+					<div class="logo" aria-hidden="true">S</div>
+					<div>
+						<div class="site-title">Shoply</div>
+						<div style="font-size:12px;color:var(--muted)">Quality goods, fast shipping</div>
+					</div>
+				</div>
+
+						<nav aria-label="Main navigation">
+							<a href="index.html">Home</a>
+							<a href="products.html">Products</a>
+							<a href="cart.html">Cart</a>
+						</nav>
+
+				<div class="actions">
+					<a class="cta secondary" href="#products">Explore</a>
+					<div class="cart" role="button" aria-label="Open cart">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						<span class="count">2</span>
+					</div>
+				</div>
+			</header>
+
+			<main>
+				<section class="hero">
+					<div class="hero-card">
+						<div class="eyebrow">Spring Sale · Up to 40% off</div>
+						<h1>Fresh styles for every season — curated for you</h1>
+						<p class="lead">Discover new arrivals and fan-favorites. Handpicked collections and fast, reliable delivery.</p>
+									<div style="display:flex;gap:12px;align-items:center">
+										<a href="products.html" class="cta">Shop Now</a>
+										<a href="products.html#featured" class="cta secondary">See Featured</a>
+									</div>
+					</div>
+
+					<div class="hero-visual" aria-hidden="true">
+						<div class="mock-product">Featured Product Preview</div>
+					</div>
+				</section>
+
+				<section id="featured">
+					<div class="section-title">
+						<h2 style="margin:0">Featured products</h2>
+						<div style="color:var(--muted);font-size:14px">Top picks this week</div>
+					</div>
+
+								<div class="products" id="products">
+									<product-card product-id="aurora-headphones" name="Aurora Headphones" price="$129" rating="4.5" meta="Wireless, noise cancelling" image="https://i.ebayimg.com/images/g/XOMAAOSwwMJf2MeA/s-l1200.jpg" thumb-height="70"></product-card>
+									<product-card product-id="lumen-lamp" name="Lumen Lamp" price="$59" rating="4.0" meta="Ambient desk light" image="https://accenthomefurnishings.ca/DATA/PRODUITIMAGE/68528.jpg"></product-card>
+									<product-card product-id="nimbus-hoodie" name="Nimbus Hoodie" price="$79" rating="4.7" meta="Soft &amp; sustainable" image="https://i.ebayimg.com/images/g/mmAAAeSwtMZpkAnI/s-l400.jpg"></product-card>
+									<product-card product-id="orbit-backpack" name="Orbit Backpack" price="$99" rating="4.3" meta="Travel-ready, water resistant" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjOJ__i3ISFYa6bLRJCxzNV0WqevOyGKnAPg&s"></product-card>
+								</div>
+				</section>
+			</main>
+
+			<footer>
+				<div class="footer-row">
+					<div>
+						<strong>Contact</strong>
+						<div style="color:var(--muted);font-size:13px;margin-top:6px">support@shoply.example · +1 (555) 123-4567</div>
+					</div>
+
+					<div class="socials" aria-label="Social links">
+						<a href="#" title="Twitter" aria-label="Twitter">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.43 1s-1.94 1.07-2.84 1.26A4.48 4.48 0 0 0 16.5 0c-2.5 0-4.5 2.26-4 4.66C8 5.3 4.5 3.7 2 1.1c-.6 1 0 2.2 1 2.8A4.48 4.48 0 0 1 1 4s1.5 2 3.8 3c-.1.3-.3.6-.4.9C4 10 6.5 13 10 13a11 11 0 0 1-8 2c4.5 2.9 9.9 0 12-6 1.4-3.6 4-7 7-7z" stroke="currentColor" stroke-width="0.6"/></svg>
+						</a>
+						<a href="#" title="Instagram" aria-label="Instagram">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="0.6"/><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" stroke="currentColor" stroke-width="0.6"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+						</a>
+						<a href="#" title="Facebook" aria-label="Facebook">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 4.92 3.55 8.99 8.18 9.76v-6.91H7.9v-2.85h2.28V9.4c0-2.26 1.34-3.51 3.39-3.51.98 0 1.99.18 1.99.18v2.19h-1.12c-1.1 0-1.44.69-1.44 1.4v1.68h2.45l-.39 2.85h-2.06v6.91C18.45 21.06 22 16.99 22 12.07z" stroke="currentColor" stroke-width="0.5"/></svg>
+						</a>
+					</div>
+				</div>
+
+				<div style="color:var(--muted);font-size:13px">© <span id="year"></span> Shoply. All rights reserved.</div>
+			</footer>
+		</div>
+
+		<script src="js/main.js" defer></script>
+		<script src="js/product-card.js" defer></script>
+		<script src="js/products.js" defer></script>
+		<script src="js/cart.js" defer></script>
+	</body>
+</html>

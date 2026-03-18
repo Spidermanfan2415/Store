@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products — Shoply</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div class="site-title">Shoply</div>
+          <div style="font-size:12px;color:var(--muted)">Quality goods, fast shipping</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+      <div class="actions">
+        <a class="cta secondary" href="products.html">Explore</a>
+        <div class="cart" role="button" aria-label="Open cart"><span class="count">0</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section id="featured">
+        <div class="section-title">
+          <h1 style="margin:0">All Products</h1>
+          <div style="color:var(--muted);font-size:14px">Browse our catalog</div>
+        </div>
+
+        <div class="products" id="products-grid">
+          <!-- product-card elements will be injected here -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="color:var(--muted);font-size:13px">© <span id="year"></span> Shoply. All rights reserved.</div>
+    </footer>
+  </div>
+  <script src="js/data-products.js" defer></script>
+  <script src="js/product-card.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/products.js" defer></script>
+</body>
+</html>

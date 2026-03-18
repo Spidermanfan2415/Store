@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product — Shoply</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div class="site-title">Shoply</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+      </nav>
+      <div class="actions">
+        <div class="cart" role="button" aria-label="Open cart"><span class="count">0</span></div>
+      </div>
+    </header>
+
+    <main>
+        <div id="product-root">
+          <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+            <div style="flex:1;min-width:260px">
+              <div style="border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#0b1220,#081224);height:220px;display:flex;align-items:center;justify-content:center" id="p-image">Image</div>
+            </div>
+            <div style="flex:1 1 320px;min-width:260px">
+              <h1 id="p-name">Product Title</h1>
+              <div id="p-meta" style="color:var(--muted);margin-bottom:8px">Meta</div>
+              <div id="p-price" style="font-weight:800;color:var(--accent);font-size:20px;margin-bottom:12px">$0</div>
+              <div id="p-rating" style="margin-bottom:12px"></div>
+              <div id="p-desc" style="color:var(--muted);margin-bottom:18px">Description</div>
+              <div style="display:flex;gap:12px">
+                <button id="add" class="cta">Add to cart</button>
+                <a href="cart.html" class="cta secondary">View Cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <footer>
+      <div style="color:var(--muted);font-size:13px">© <span id="year"></span> Shoply. All rights reserved.</div>
+    </footer>
+  </div>
+  <script src="js/data-products.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // Render product details from ShoplyProducts based on ?id=...
+    document.addEventListener('DOMContentLoaded', function(){
+      function qs(name){
+        return new URLSearchParams(location.search).get(name);
+      }
+      var id = qs('id');
+      var products = window.ShoplyProducts || [];
+      var product = products.find(p => p.id === id) || products[0];
+      if(!product){
+        document.getElementById('product-root').innerHTML = '<div style="color:var(--muted)">Product not found.</div>';
+        return;
+      }
+      document.getElementById('p-name').textContent = product.name;
+      document.getElementById('p-meta').textContent = product.meta;
+      document.getElementById('p-price').textContent = product.priceText || ('$'+(product.price||0));
+      document.getElementById('p-desc').textContent = product.description || '';
+      // image
+      var imgWrap = document.getElementById('p-image');
+      imgWrap.innerHTML = '';
+      var img = document.createElement('img');
+      img.src = product.image; img.alt = product.name; img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover';
+      imgWrap.appendChild(img);
+      // rating
+      var ratingEl = document.getElementById('p-rating');
+      ratingEl.innerHTML = '';
+      var r = Math.floor(product.rating||0);
+      for(var i=0;i<5;i++){
+        var s = document.createElement('span');
+        s.style.marginRight='4px';
+        s.style.color = i<r ? 'gold' : 'rgba(255,255,255,0.12)';
+        s.textContent = '★';
+        ratingEl.appendChild(s);
+      }
+
+      // Add-to-cart wiring — reuse Shoply localStorage format
+      document.getElementById('add').addEventListener('click', function(){
+        var cart = JSON.parse(localStorage.getItem('shoply_cart')||'[]');
+        cart.push({title:product.name,price:product.price||0,image:product.image,added:Date.now(),id:product.id});
+        localStorage.setItem('shoply_cart', JSON.stringify(cart));
+        var countEl = document.querySelector('.cart .count'); if(countEl) countEl.textContent = cart.length;
+        this.textContent = 'Added ✓';
+        var btn = this;
+        btn.disabled = true;
+        setTimeout(function(){ btn.textContent = 'Add to cart'; btn.disabled = false; },1200);
+      });
+    });
+  </script>
+</body>
+</html>
